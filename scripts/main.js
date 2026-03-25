@@ -177,3 +177,21 @@ const showData = (id, datas) => {
 };
 
 loadData();
+
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+
+  const input = document.getElementById("search");
+  const searchValue = input.value.trim().toLowerCase();
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res => res.json())
+    .then(data => {
+      const allResults = data.data;
+      const filterResults = allResults.filter(word => word.title.toLowerCase().includes(searchValue) || word.description.toLowerCase().includes(searchValue))
+
+      filterResults.length > 0 ? showData("allBtn", filterResults) : alert("No Results Found");
+    })
+
+
+})
