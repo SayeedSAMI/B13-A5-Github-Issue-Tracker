@@ -11,7 +11,7 @@ document.getElementById("loginBtn").addEventListener("click", function () {
 
   if (email === "admin" && pass == "admin123") {
     alert("Login Success");
-    window.location.assign("");
+    window.location.assign("./main.html");
   } else {
     alert("Login Failed !!\n Wrong Password or Email");
     return;

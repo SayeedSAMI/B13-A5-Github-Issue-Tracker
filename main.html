@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- styles link -->
+    <link rel="stylesheet" href="./styles/styles.css" />
+
+    <!-- daisyUI + tailwind cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- fav icon cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Main</title>
+  </head>
+
+  <body class="bg-[#f8fafc] m-0 min-h-screen">
+    <header>
+      <div class="navbar bg-base-100 shadow-sm">
+        <div class="flex-1">
+          <a class="btn btn-ghost text-xl text-center justify-center"
+            ><img src="./assets/github-logo.png" class="w-9" alt="" /> GitHub
+            Issues Tracker</a
+          >
+        </div>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            placeholder="Search issues..."
+            class="input input-bordered w-24 md:w-auto"
+          />
+          <button class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> New Issue
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="w-[1100px] mx-auto space-y-8 mt-11">
+      <section id="btnContainer" class="bg-white shadow-sm p-6 rounded-md">
+        <button type="" class="btn px-8 text-[#64748B]">All</button>
+        <button type="" class="btn px-8 text-[#64748B]">Open</button>
+        <button type="" class="btn px-8 text-[#64748B]">Closed</button>
+      </section>
+
+      <section class="bg-[#f8fafc] shadow-sm p-4 rounded-md space-y-6">
+        <div
+          class="flex justify-between items-center shadow-sm p-4 rounded-md bg-white"
+        >
+          <div class="flex gap-3">
+            <div class="p-2 rounded-full bg-purple-200">
+              <img src="./assets/Aperture.png" alt="" />
+            </div>
+            <div id="" >
+                
+          <h1 id="IssueNumber"></h1>
+              <p>Track and manage your project issues</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <p class="text-green-700">
+              <button class="w-2 h-2 rounded-full bg-green-700"></button> Open
+            </p>
+            <p class="text-purple-700">
+              <button class="w-2 h-2 rounded-full bg-purple-700"></button>
+              Closed
+            </p>
+          </div>
+        </div>
+
+        <div id="issuesContainer" class="grid grid-cols-4 gap-2">
+          <div
+            class="shadow-sm max-w-72 p-4 space-y-4 rounded-md border-t-[3px] border-green-400"
+          >
+            <div class="flex justify-between">
+              <div class="">
+                <img src="./assets/Open-Status.png" alt="" />
+              </div>
+              <!-- <div class="">
+                <img src="./assets/Closed- Status .png" alt="" />
+              </div> -->
+
+              <button class="btn btn-xs btn-soft btn-secondary">High</button>
+              <!-- <button class="btn btn-xs  btn-soft btn-warning">Warning</button> -->
+              <!-- <button class="btn btn-xs  btn-soft">Default</button> -->
+            </div>
+            <h1 class="font-semibold text-base">
+              Fix navigation menu on mobile devices
+            </h1>
+            <p class="text-[#64748B] font-normal text-xs">
+              The navigation menu doesn't collapse properly on mobile devices...
+            </p>
+            <div>
+              <button
+                class="btn btn-soft btn-secondary rounded-4xl border border-red-300"
+              >
+                Bug
+              </button>
+              <button
+                class="btn btn-soft btn-warning rounded-4xl border border-yellow-300"
+              >
+                help wanted
+              </button>
+              <!-- <button class="btn btn-soft btn-success  rounded-4xl border border-green-300">Enhancement</button> -->
+            </div>
+            <div class="border-t border-gray-200 space-y-3 p-3">
+              <p class="text-[#64748B] font-normal text-xs">#1 by john_doe</p>
+              <p class="text-[#64748B] font-normal text-xs">1/15/2024</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>
