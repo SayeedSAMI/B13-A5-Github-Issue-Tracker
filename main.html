@@ -57,9 +57,30 @@
     </header>
     <main class="w-[1100px] mx-auto space-y-8 mt-11">
       <section id="btnContainer" class="bg-white shadow-sm p-6 rounded-md">
-        <button type="" class="btn px-8 text-[#64748B]">All</button>
-        <button type="" class="btn px-8 text-[#64748B]">Open</button>
-        <button type="" class="btn px-8 text-[#64748B]">Closed</button>
+        <button
+          onclick="(clicked(allBtn), loadData('allBtn'))"
+          id="allBtn"
+          type=""
+          class="btn px-8 btn-primary nonActivebtn"
+        >
+          All
+        </button>
+        <button
+          type=""
+          id="openBtn"
+          onclick="(clicked(openBtn), loadData('open'))"
+          class="btn px-8 nonActivebtn"
+        >
+          Open
+        </button>
+        <button
+          type=""
+          id="clossedBtn"
+          onclick="(clicked(clossedBtn), loadData('closed'))"
+          class="btn px-8 nonActivebtn"
+        >
+          Closed
+        </button>
       </section>
 
       <section class="bg-[#f8fafc] shadow-sm p-4 rounded-md space-y-6">
@@ -133,4 +154,3 @@
     <script src="./scripts/main.js"></script>
   </body>
 </html>
-

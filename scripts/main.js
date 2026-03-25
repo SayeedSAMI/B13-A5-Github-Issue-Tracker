@@ -1,23 +1,62 @@
-const loadData = async () => {
-    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
-    const res = await fetch(url);
-    const data = await res.json();
-    // fetch(url).then(response => response.json()).then(data => {
-    //     // console.log(data);
-    showData(data.data);
-    showIssueNumber(data.data);
+const loadData = async (id = "allBtn") => {
+  const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
+  const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+  const data = await res.json();
+  // fetch(url).then(response => response.json()).then(data => {
+  //     // console.log(data);
+  showData(id, data.data);
+  showIssueNumber(data.data);
 
 }
+
+// const clicked = (id) => {
+
+//     const btn = document.getElementById(id);
+
+//     const btnAll = document.getElementById("allBtn");
+//     const btnClosed = document.getElementById("clossedBtn");
+//     const btnOpen = document.getElementById("openBtn");
+
+//     btnAll.classList.remove("btn-primary");
+//     btnClosed.classList.remove("btn-primary");
+//     btnOpen.classList.remove("btn-primary");
+
+//     btn.classList.add("btn-primary");
+
+// }
+const clicked = (id) => {
+  const buttons = document.querySelectorAll(".nonActivebtn");
+  buttons.forEach(btn => btn.classList.remove("btn-primary"));
+
+  id.classList.add("btn-primary");
+}
+
+
 
 const showWarningLables = (lables) => {
-    return lables.map(l =>
-        `<button class="btn btn-soft btn-secondary rounded-4xl border border-red-300">${l}</button>`
-    ).join(" ");
+  return lables.map(l =>
+    `<button class="${l === "bug" ? "btn btn-sm btn-soft btn-secondary rounded-4xl border border-red-300" : l === "help wanted" ? "btn btn-sm  btn-soft btn-warning rounded-4xl border border-yellow-300" : l === "enhancement" ? "btn btn-sm  btn-soft btn-success  rounded-4xl border border-green-300" : "btn  btn-sm btn-soft btn-success  rounded-4xl border border-green-300"}">
+      ${l}
+    </button>`
+  ).join(" ");
 }
 
+
+// const labelsClass = (label) => {
+
+//     const classToAdd = document.getElementById("labelBtn");
+//     label.map(l => {
+//         if (l === "bug") {
+//             classToAdd.classList.add("btn btn-soft btn-secondary rounded-4xl border border-red-300");
+//         }
+//     })
+
+
+// }
+
 const showIssueNumber = (data) => {
-    const h1 = document.getElementById("IssueNumber");
-    h1.innerText = `${data.length} Issues`;
+  const h1 = document.getElementById("IssueNumber");
+  h1.innerText = `${data.length} Issues`;
 }
 // id": 1,
 // "title": "Fix navigation menu on mobile devices",
@@ -34,15 +73,22 @@ const showIssueNumber = (data) => {
 // "createdAt": "2024-01-15T10:30:00Z",
 // "updatedAt": "2024-01-15T10:30:00Z"
 
-const showData = (datas) => {
+const showData = (id, datas) => {
 
-    const cardContainer = document.getElementById('issuesContainer');
-    cardContainer.innerHTML = "";
+  const cardContainer = document.getElementById('issuesContainer');
+  cardContainer.innerHTML = "";
 
-    datas.forEach(data => {
+  let filterDAta;
 
-        const newCard = document.createElement('div');
-        newCard.innerHTML = `
+  if (id === "allBtn") {
+    filterDAta = datas;
+  } else {
+    filterDAta = datas.filter(data => data.status === id);
+  }
+  filterDAta.forEach(data => {
+
+    const newCard = document.createElement('div');
+    newCard.innerHTML = `
           <div
             class="shadow-sm max-w-72 p-4 space-y-4 rounded-md border-t-[3px] border-green-400"
           >
@@ -62,18 +108,8 @@ const showData = (datas) => {
               ${data.description}
             </p>
           <div>
-  <!-- <button
-    id="labelsShow"
-    class="btn btn-soft btn-secondary rounded-4xl border border-red-300"
-  >
-    Bug
-  </button>
-  <button class="btn btn-soft btn-warning rounded-4xl border border-yellow-300">
-    help wanted
-  </button> -->
-  <!-- <button class="btn btn-soft btn-success  rounded-4xl border border-green-300">Enhancement</button> -->
   ${showWarningLables(data.labels)}
-</div>
+          </div>
 
             <div class="border-t border-gray-200 space-y-3 p-3">
               <p class="text-[#64748B] font-normal text-xs">#1 by ${data.author}</p>
@@ -82,9 +118,9 @@ const showData = (datas) => {
           </div>
         `
 
-        cardContainer.append(newCard);
+    cardContainer.append(newCard);
 
-    })
+  })
 
 }
 
