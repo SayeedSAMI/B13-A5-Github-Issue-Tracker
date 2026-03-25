@@ -7,7 +7,7 @@ const loadData = async (id = "allBtn") => {
   // fetch(url).then(response => response.json()).then(data => {
   //     // console.log(data);
   showData(id, data.data);
-  showIssueNumber(data.data);
+  // showIssueNumber(data.data);
 };
 
 // const clicked = (id) => {
@@ -30,6 +30,7 @@ const clicked = (id) => {
   buttons.forEach((btn) => btn.classList.remove("btn-primary"));
 
   id.classList.add("btn-primary");
+
 };
 
 const showWarningLables = (lables) => {
@@ -137,6 +138,8 @@ const showData = (id, datas) => {
   } else {
     filterDAta = datas.filter((data) => data.status === id);
   }
+
+  showIssueNumber(filterDAta);
   filterDAta.forEach((data) => {
     const newCard = document.createElement("div");
     newCard.innerHTML = `
