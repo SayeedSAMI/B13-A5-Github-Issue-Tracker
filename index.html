@@ -26,6 +26,41 @@
     <title>Login Page</title>
   </head>
   <body>
+    <div class="hero bg-base-200 min-h-screen">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="card bg-base-100 w-[500px] shrink-0 shadow-2xl">
+          <div class="card-body">
+            <div class="mx-auto text-center">
+              <img src="./assets/github-logo.png" class="mx-auto" alt="" />
+              <h1 class="text-[#1F2937] text-2xl font-semibold">
+                GitHub Issues Tracker
+              </h1>
+              <p class="font-normal text-base text-[#64748B]">
+                Sign in to manage your issues
+              </p>
+            </div>
+            <fieldset class="fieldset w-[424px] mx-auto">
+              <label class="label font-medium text-base">Username</label>
+              <input
+                type="email"
+                id="inputEmail"
+                class="input w-full max-w-md"
+                placeholder="Enter Username"
+              />
+              <label class="label font-medium text-base">Password</label>
+              <input
+                type="password"
+                id="inputPassword"
+                class="input w-full max-w-md"
+                placeholder="Enter Password"
+              />
+              <button id="loginBtn" class="btn btn-neutral mt-4 max-w-md">Login</button>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./scripts/login.js"></script>
   </body>
 </html>
