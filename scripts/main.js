@@ -9,6 +9,12 @@ const loadData = async () => {
 
 }
 
+const showWarningLables = (lables) => {
+    return lables.map(l =>
+        `<button class="btn btn-soft btn-secondary rounded-4xl border border-red-300">${l}</button>`
+    ).join(" ");
+}
+
 const showIssueNumber = (data) => {
     const h1 = document.getElementById("IssueNumber");
     h1.innerText = `${data.length} Issues`;
@@ -55,19 +61,20 @@ const showData = (datas) => {
             <p class="text-[#64748B] font-normal text-xs">
               ${data.description}
             </p>
-            <div>
-              <button
-                class="btn btn-soft btn-secondary rounded-4xl border border-red-300"
-              >
-                Bug
-              </button>
-              <button
-                class="btn btn-soft btn-warning rounded-4xl border border-yellow-300"
-              >
-                help wanted
-              </button>
-              <!-- <button class="btn btn-soft btn-success  rounded-4xl border border-green-300">Enhancement</button> -->
-            </div>
+          <div>
+  <!-- <button
+    id="labelsShow"
+    class="btn btn-soft btn-secondary rounded-4xl border border-red-300"
+  >
+    Bug
+  </button>
+  <button class="btn btn-soft btn-warning rounded-4xl border border-yellow-300">
+    help wanted
+  </button> -->
+  <!-- <button class="btn btn-soft btn-success  rounded-4xl border border-green-300">Enhancement</button> -->
+  ${showWarningLables(data.labels)}
+</div>
+
             <div class="border-t border-gray-200 space-y-3 p-3">
               <p class="text-[#64748B] font-normal text-xs">#1 by ${data.author}</p>
               <p class="text-[#64748B] font-normal text-xs">${data.createdAt}</p>
